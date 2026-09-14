@@ -36,56 +36,51 @@
       font-size: 15px;
       line-height: 1.6;
     }
+<!-- 2. Your Auth Screen structure matching your CSS classes -->
+<div id="auth-screen">
+  
+  <!-- Logo Section -->
+  <div class="auth-logo">
+    <!-- Place your app's SVG icon here -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+    <div class="auth-logo-text">YourApp<span>Name</span></div>
+  </div>
 
-    /* ── AUTH SCREEN ── */
-    #auth-screen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
-      text-align: center;
-    }
+  <!-- Card Component Container -->
+  <div class="auth-card">
+    <h1>Welcome Back</h1>
+    <p>Sign in to your account to access your personal dashboard and save your progress.</p>
+    
+    <!-- Google Auth Config Elements -->
+    <div id="g_id_onload"
+         data-client_id="https://accounts.google.com/gsi/http://870510440840-51oei2nt1v20c8c3huo2qnkpqsblfm6k.apps.googleusercontent.com"
+         data-context="signin"
+         data-ux_mode="popup"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
 
-    .auth-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 2.5rem;
-    }
+    <!-- The actual interactive button customized to fill the card width -->
+    <div class="g_id_signin"
+         data-type="standard"
+         data-shape="rectangular"
+         data-theme="outline"
+         data-size="large"
+         data-width="316" 
+         data-logo_alignment="left">
+    </div>
+  </div>
 
-    .auth-logo svg { width: 36px; height: 36px; }
+</div>
 
-    .auth-logo-text {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
+<!-- 3. JavaScript handler function for logic execution -->
+<script>
+  function handleCredentialResponse(response) {
+     console.log("Encoded JWT ID token: " + response.credential);
+     // Call your backend processing logic here
+  }
+</script>
 
-    .auth-logo-text span { color: var(--accent); }
-
-    .auth-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
-      width: 100%;
-      max-width: 380px;
-    }
-
-    .auth-card h1 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .auth-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
 
     .feature-list {
       list-style: none;
